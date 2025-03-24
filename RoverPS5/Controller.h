@@ -21,6 +21,7 @@ void onConnectedController(ControllerPtr ctl) {
                            properties.product_id);
             myControllers[i] = ctl;
             foundEmptySlot = true;
+            ctl->setColorLED(255, 0, 255);
             break;
         }
     }
@@ -66,6 +67,24 @@ void processGamepad(ControllerPtr ctl) {
     SpeedF = ctl->throttle();
     SpeedR = ctl->brake();
     Steer = ctl->axisX();
+    //funcitie met timer die de linetracker aan en uit zet
+    if (timer3 + 100< millis()){
+      if((ctl->dpad() & 0x01) && useLineTracker == false ){
+        useLineTracker = true;
+        Serial.println("gebruik linetracker");
+      }
+      else if ((ctl->dpad() & 0x01) && useLineTracker == true) {
+        useLineTracker = false;
+        Serial.println("gebruik linetracker gestopt");
+        
+      }
+      if((ctl->dpad() & 0x02)){
+        stappenmotor();
+        Serial.println("Stappenmotor");
+
+      }
+      timer3 = millis();
+    }
     if (ctl->a()) {
         static int colorIdx = 0;
         // Some gamepads like DS4 and DualSense support changing the color LED.
@@ -109,7 +128,7 @@ void processGamepad(ControllerPtr ctl) {
 
     // Another way to query controller data is by getting the buttons() function.
     // See how the different "dump*" functions dump the Controller info.
-    dumpGamepad(ctl);
+    //dumpGamepad(ctl);
 }
 
 void processControllers() {

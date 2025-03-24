@@ -44,6 +44,7 @@ void linetrackersetup() {
 
 void linetracker() {
   // Read the state of MCP23017 pin 0
+  
   int sensor0 = mcp.digitalRead(4);
   int sensor1 = mcp.digitalRead(3);
   int sensor2 = mcp.digitalRead(2);
@@ -184,6 +185,5 @@ void linetracker() {
     pwm.setPWM(leftEneable, 0, 4095);
     pwm.setPWM(rightEneable, 0, 4095);
   }
-
-  delay(1000);
+  
 }

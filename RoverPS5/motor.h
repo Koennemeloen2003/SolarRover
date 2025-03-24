@@ -65,4 +65,11 @@ void motorSet(){
 
     }
 }
+void stappenmotor(){
+  pwm.setPWM(stapEneable, 0 ,0);
+  pwm.setPWM(stapmotor, 0, 2045);
+  delay(1);
+  pwm.setPWM(stapmotor, 0, 0);
+  pwm.setPWM(stapEneable, 0 ,4095);
+}
 #endif

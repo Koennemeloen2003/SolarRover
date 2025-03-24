@@ -24,7 +24,9 @@ void setupPWM() {
 
 unsigned int data;
 unsigned long previousWatchDogTime;
-unsigned long timer;
+unsigned long timer = millis();
+unsigned long timer2= millis();
+unsigned long timer3 = millis();
 
 int SpeedF;
 int SpeedR;
@@ -32,13 +34,19 @@ int Steer;
 float SteerL;
 float SteerR;
 
+bool useLineTracker = false;
+
 #define leftMotor 0
 #define leftFR 1
 #define leftEneable 2
 
-#define rightMotor 4
-#define rightFR 5
-#define rightEneable 6
+#define stapmotor 4
+#define stapFR 5
+#define stapEneable 6
+
+#define rightMotor 8
+#define rightFR 9
+#define rightEneable 10
 
 int betereJoystick(int Xmax, float x, float Pmax, float p, int Amplitude) {
   return Amplitude * (x * sqrt(sq(Pmax) - sq(p))) / (sqrt(sq(Pmax) * sq(Xmax) - sq(p * x)));
