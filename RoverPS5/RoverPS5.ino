@@ -13,8 +13,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (timer + 250 > millis()){
-    controllerUpdate();
+  controllerUpdate();
+  if (timer + 100 < millis()){
+    
     speedCalc();
     steerCalc();
     motorSet();
