@@ -8,7 +8,6 @@ void setup() {
   Serial.begin(115200);
   ControllerSetup();
   setupPWM();
-  Serial.println("test1");
   linetrackersetup();
 }
 
@@ -22,7 +21,7 @@ void loop() {
     motorSet();
     timer = millis();
   } 
-  if (useLineTracker && (timer2 +1000 < millis())){
+  if (useLineTracker == true && (timer2 +1000 < millis())){
     linetracker();
     timer2=millis();
   }

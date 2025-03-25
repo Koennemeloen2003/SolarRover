@@ -131,7 +131,7 @@ void linetracker() {
       pwm.setPWM(rightMotor, 0, 500);
       pwm.setPWM(rightFR, 0, 4095);
   }
-  else if (sensorstat[2] == true && sensorstat[6] == false && sensorstat[4] == false && sensorstat[5] == false  && sensorstat[7] == false && sensorstat[8] == false && sensorstat[9] == false) {
+  else if (sensorstat[2] == true && sensorstat[6] == false  && sensorstat[5] == false  && sensorstat[7] == false && sensorstat[8] == false && sensorstat[9] == false) {
      Serial.println("Stuur minder ver naar rechts");
     pwm.setPWM(leftEneable, 0, 0);
       pwm.setPWM(rightEneable, 0, 0);
@@ -141,7 +141,7 @@ void linetracker() {
       pwm.setPWM(rightFR, 0, 4095);
   }
 
-  else if (sensorstat[7] == true && sensorstat[0] == false && sensorstat[1] == false && sensorstat[2] == false  && sensorstat[4] == false && sensorstat[5] == false && sensorstat[3] == false) {
+  else if (sensorstat[7] == true && sensorstat[0] == false && sensorstat[1] == false && sensorstat[2] == false  && sensorstat[4] == false && sensorstat[3] == false) {
     Serial.println("Stuur minder ver naar links");
     pwm.setPWM(leftEneable, 0, 0);
       pwm.setPWM(rightEneable, 0, 0);
@@ -150,7 +150,7 @@ void linetracker() {
       pwm.setPWM(rightMotor, 0, 1000);
       pwm.setPWM(rightFR, 0, 4095);
   }
-  else if (sensorstat[8] == true && sensorstat[0] == false && sensorstat[1] == false && sensorstat[2] == false && sensorstat[3] == false && sensorstat[4] == false && sensorstat[5] == false && sensorstat[6] == false && sensorstat[7] == false) {
+  else if ((sensorstat[8] == true && sensorstat[0] == false && sensorstat[1] == false && sensorstat[2] == false && sensorstat[3] == false && sensorstat[4] == false && sensorstat[5] == false && sensorstat[6] == false && sensorstat[7] == false) || (sensorstat[9] == true && sensorstat[0] == false && sensorstat[1] == false && sensorstat[2] == false && sensorstat[3] == false && sensorstat[4] == false && sensorstat[5] == false && sensorstat[6] == false && sensorstat[7] == false && sensorstat[8] == false)) {
     Serial.println("Stuur naar links");
     pwm.setPWM(leftEneable, 0, 0);
       pwm.setPWM(rightEneable, 0, 0);
@@ -159,15 +159,6 @@ void linetracker() {
       pwm.setPWM(rightMotor, 0, 2000);
       pwm.setPWM(rightFR, 0, 4095);
 
-  }
-  else if (sensorstat[9] == true && sensorstat[0] == false && sensorstat[1] == false && sensorstat[2] == false && sensorstat[3] == false && sensorstat[4] == false && sensorstat[5] == false && sensorstat[6] == false && sensorstat[7] == false && sensorstat[8] == false) {
-    Serial.println("Stuur naar links");
-    pwm.setPWM(leftEneable, 0, 0);
-      pwm.setPWM(rightEneable, 0, 0);
-      pwm.setPWM(leftMotor, 0, 500);
-      pwm.setPWM(leftFR, 0, 0);
-      pwm.setPWM(rightMotor, 0, 2000);
-      pwm.setPWM(rightFR, 0, 4095);
   }
   else if ((sensorstat[3] == true || sensorstat[4] == true || sensorstat[5] == true || sensorstat[6] == true) && sensorstat[7] == false && sensorstat[2]== false) { //stuur niet
   Serial.println("Stuur niet");

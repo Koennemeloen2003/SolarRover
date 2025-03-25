@@ -24,9 +24,9 @@ void setupPWM() {
 
 unsigned int data;
 unsigned long previousWatchDogTime;
-unsigned long timer = millis();
-unsigned long timer2= millis();
-unsigned long timer3 = millis();
+unsigned long timer = 0;
+unsigned long timer2= 0;
+unsigned long timer3 = 0;
 
 int SpeedF;
 int SpeedR;
@@ -34,7 +34,7 @@ int Steer;
 float SteerL;
 float SteerR;
 
-bool useLineTracker = false;
+bool useLineTracker;
 
 #define leftMotor 0
 #define leftFR 1
