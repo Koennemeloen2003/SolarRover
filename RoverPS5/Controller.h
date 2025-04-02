@@ -83,6 +83,9 @@ void processGamepad(ControllerPtr ctl) {
         Serial.println("Stappenmotor");
 
       }
+      if((ctl->dpad() & 0x04)){
+        stappenmotorReverse();
+      }
       timer3 = millis();
     }
     if (ctl->a()) {
