@@ -61,8 +61,8 @@ bool useSolarTracker = false;
 #define rightFR 9
 #define rightEneable 10
 
-#define ldrRight 12
-#define ldrLeft 13
+#define ldrRight 32
+#define ldrLeft 33
 #define solarKnop 25
 
 int betereJoystick(int Xmax, float x, float Pmax, float p, int Amplitude) {

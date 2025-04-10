@@ -22,7 +22,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.println(analogRead(12));
   
   controllerUpdate();
 
@@ -35,7 +34,7 @@ void loop() {
   if (useLineTracker == true && (timer2 +1000 < millis())){
     linetracker();
     timer2=millis();
-  }
+  }/*
   if(ina228_IN.conversionReady()){
     readINA();
     displayLoop();
@@ -43,5 +42,5 @@ void loop() {
   if (useSolarTracker == true && (timer4 + 100 < millis())){
     void solarSensor();
   }
-  
+  */
 }
