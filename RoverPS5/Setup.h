@@ -14,7 +14,12 @@ ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 
 void setupPWM() {
   Serial.println("GPIO test!");
-  pwm.begin();
+  if (!pwm.begin()){
+    Serial.println("PWM bordje wil niet");
+  }
+  else {
+    Serial.println("PWM bordje gevonden");
+  }
   pwm.setPWMFreq(1000);  // Set to whatever you like, we don't use it in this demo!
 
   // if you want to really speed stuff up, you can go into 'fast 400khz I2C' mode
