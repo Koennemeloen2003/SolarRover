@@ -9,7 +9,6 @@ void linetrackersetup() {
   //Serial.begin(9600);  // Using a higher baud rate for better performance on ESP32
 
   // Initialize I2C (default ESP32 pins: SDA=21, SCL=22)
-  //Wire.begin(16, 17);  // Specify SDA and SCL pins if different from the default
 
   // Initialize MCP23017 with the correct I2C address
   if (!mcp.begin_I2C(0x27)) {  // Updated address
@@ -160,7 +159,7 @@ void linetracker() {
       pwm.setPWM(rightFR, 0, 4095);
 
   }
-  else if ((sensorstat[3] == true || sensorstat[4] == true || sensorstat[5] == true || sensorstat[6] == true) && sensorstat[7] == false && sensorstat[2]== false) { //stuur niet
+  else if (((sensorstat[3] == true || sensorstat[4] == true || sensorstat[5] == true || sensorstat[6] == true) && sensorstat[7] == false && sensorstat[2]== false) || (sensorstat[0] == true && sensorstat[1] == true && sensorstat[2] == true && sensorstat[3] == true && sensorstat[4] == true && sensorstat[5] == true && sensorstat[6] == true && sensorstat[7] == true && sensorstat[8] == true && sensorstat[9] == true)) { //stuur niet
   Serial.println("Stuur niet");
       pwm.setPWM(leftEneable, 0, 0);
       pwm.setPWM(rightEneable, 0, 0);

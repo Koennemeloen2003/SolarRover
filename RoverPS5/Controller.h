@@ -4,6 +4,7 @@
 #include <Bluepad32.h>
 #include "Setup.h"
 #include "motor.h"
+#include "Solar.h"
 
 
 
@@ -86,6 +87,15 @@ void processGamepad(ControllerPtr ctl) {
       if((ctl->dpad() & 0x04)){
         stappenmotorReverse();
       }
+      if((ctl->dpad() & 0x08)&& useSolarTracker == false){
+        useSolarTracker = true;
+        Serial.println("Solar tracker aan");
+      }
+      else if((ctl->dpad() & 0x08)&& useSolarTracker == true){
+        useSolarTracker = false;
+        Serial.println("Solar tracker uit");
+
+        }
       timer3 = millis();
     }
     if (ctl->a()) {

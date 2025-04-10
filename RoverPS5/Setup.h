@@ -1,3 +1,4 @@
+#include "esp32-hal-gpio.h"
 
 #ifndef Setup_h
 #define Setup_h
@@ -27,6 +28,7 @@ unsigned long previousWatchDogTime;
 unsigned long timer = 0;
 unsigned long timer2= 0;
 unsigned long timer3 = 0;
+unsigned long timer4 = 0;
 
 int SpeedF;
 int SpeedR;
@@ -34,7 +36,18 @@ int Steer;
 float SteerL;
 float SteerR;
 
-bool useLineTracker;
+float currentOut;
+float voltageOut;
+float powerIn;
+float powerOut;
+float tempIn;
+float tempOut;
+
+int solarDif;
+int solarLocation = 0;
+
+bool useLineTracker = false;
+bool useSolarTracker = false;
 
 #define leftMotor 0
 #define leftFR 1
@@ -47,6 +60,10 @@ bool useLineTracker;
 #define rightMotor 8
 #define rightFR 9
 #define rightEneable 10
+
+#define ldrRight 12
+#define ldrLeft 13
+#define solarKnop 25
 
 int betereJoystick(int Xmax, float x, float Pmax, float p, int Amplitude) {
   return Amplitude * (x * sqrt(sq(Pmax) - sq(p))) / (sqrt(sq(Pmax) * sq(Xmax) - sq(p * x)));
