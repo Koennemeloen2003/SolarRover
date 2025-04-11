@@ -5,41 +5,27 @@
 #include "Controller.h"
 #include "Setup.h"
 
-void solarSetup(){
-  while(analogRead(solarKnop) < 1000){
-    pwm.setPWM(stapEneable, 0 ,0);
-    pwm.setPWM(stapFR, 0 ,0);
-    pwm.setPWM(stapmotor, 0, 2045);
-  }
-  pwm.setPWM(stapEneable, 0 ,4095);
-  pwm.setPWM(stapmotor, 0, 0);
-  pwm.setPWM(stapEneable, 0 ,0);
-  pwm.setPWM(stapFR, 0 ,4095);
-  pwm.setPWM(stapmotor, 0, 2045);
-  delay(2000);
-  pwm.setPWM(stapmotor, 0, 0);
-  pwm.setPWM(stapEneable, 0 ,4095);
-}
 
-void solarStep(int stepsize, bool right){
-  if (right>0){ 
-    pwm.setPWM(stapEneable, 0 ,0);
-    pwm.setPWM(stapFR, 0 ,0);
-    pwm.setPWM(stapmotor, 0, 2045);
-    delay(stepsize);
-    pwm.setPWM(stapEneable, 0 ,4095);
-    pwm.setPWM(stapmotor, 0, 0);
-    solarLocation += stepsize;
-  }
-  else{
-    pwm.setPWM(stapEneable, 0 ,0);
-    pwm.setPWM(stapFR, 0 ,4095);
-    pwm.setPWM(stapmotor, 0, 2045);
-    delay(stepsize);
-    pwm.setPWM(stapEneable, 0 ,4095);
-    pwm.setPWM(stapmotor, 0, 0);
-    solarLocation -= stepsize;
-  }
+void solarStep(int stepsize, bool left, int button){
+  if (analogRead(button) < 1000)
+    if (left>0){ 
+      
+      pwm.setPWM(stapEneable, 0 ,0);
+      pwm.setPWM(stapFR, 0 ,0);
+      pwm.setPWM(stapmotor, 0, 2045);
+      delay(stepsize);
+      pwm.setPWM(stapEneable, 0 ,4095);
+      pwm.setPWM(stapmotor, 0, 0);
+    
+    }
+    else{
+      pwm.setPWM(stapEneable, 0 ,0);
+      pwm.setPWM(stapFR, 0 ,4095);
+      pwm.setPWM(stapmotor, 0, 2045);
+      delay(stepsize);
+      pwm.setPWM(stapEneable, 0 ,4095);
+      pwm.setPWM(stapmotor, 0, 0);
+    }
   
 }
 
@@ -47,39 +33,34 @@ void solarSensor(){
   int solarDif = analogRead(ldrRight)-analogRead(ldrLeft);
   switch (solarDif){
     case -4000 ... -2000:
-      solarStep(200, false);
+      solarStep(400, true, solarKnopRight);
       break;
-    case -1999 ... -100:
-      solarStep(100, false);
+    case -1999 ... -1000:
+      solarStep(200, true, solarKnopRight);
       break;
-    case 100 ... 1999:
-      solarStep(100, true);
+    case -999 ... -100:
+      solarStep(100, true, solarKnopRight);
+      break;
+      case 100 ... 999:
+      solarStep(100, false, solarKnopLeft);
+      break;
+    case 1000 ... 1999:
+      solarStep(200, false, solarKnopLeft);
       break;
     case 2000 ... 4000:
-      solarStep(200, true);
+      solarStep(400, false, solarKnopLeft);
       break;
   }
-  timer4 = millis();
 }
 
 
 
 
 void stappenmotor(){
-  pwm.setPWM(stapEneable, 0 ,0);
-  pwm.setPWM(stapFR, 0 ,0);
-  pwm.setPWM(stapmotor, 0, 2045);
-  delay(100);
-  pwm.setPWM(stapmotor, 0, 0);
-  pwm.setPWM(stapEneable, 0 ,4095);
+  solarStep(100, true, solarKnopRight);
 }
 
 void stappenmotorReverse(){
-  pwm.setPWM(stapEneable, 0 ,0);
-  pwm.setPWM(stapFR, 0 , 4095);
-  pwm.setPWM(stapmotor, 0, 2045);
-  delay(10);
-  pwm.setPWM(stapmotor, 0, 0);
-  pwm.setPWM(stapEneable, 0 ,4095);
+  solarStep(100, false, solarKnopLeft);
 }
 #endif

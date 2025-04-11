@@ -69,7 +69,7 @@ void processGamepad(ControllerPtr ctl) {
     SpeedR = ctl->brake();
     Steer = ctl->axisX();
     //funcitie met timer die de linetracker aan en uit zet
-    if (timer3 + 100< millis()){
+    if (timer3 + 400< millis()){
       if((ctl->dpad() & 0x01) && useLineTracker == false ){
         useLineTracker = true;
         Serial.println("gebruik linetracker");
@@ -113,7 +113,7 @@ void processGamepad(ControllerPtr ctl) {
                 break;
             case 2:
                 // Blue
-                ctl->setColorLED(0, 0, 255);
+                ctl->setColorLED(255, 0, 255);
                 break;
         }
         colorIdx++;

@@ -9,22 +9,19 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  Serial.println("test");
+  delay(1000);
   ControllerSetup();
-  Serial.println("test");
   setupPWM();
-  Serial.println("test");
   linetrackersetup();
-  Serial.println("test");
-  //INASetup();
-  //displaySetup();
+  INASetup();
+  displaySetup();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   
   controllerUpdate();
-
+  Serial.printf("%d \t %d \t %d \t %d\n",analogRead(ldrLeft), analogRead(ldrRight), analogRead(solarKnopRight), analogRead(solarKnopLeft)); 
   if ((timer + 100 < millis()) && useLineTracker == false){
     speedCalc();
     steerCalc();
@@ -34,13 +31,14 @@ void loop() {
   if (useLineTracker == true && (timer2 +1000 < millis())){
     linetracker();
     timer2=millis();
-  }/*
+  }
   if(ina228_IN.conversionReady()){
     readINA();
     displayLoop();
   }
   if (useSolarTracker == true && (timer4 + 100 < millis())){
-    void solarSensor();
+    solarSensor();
+    timer4 = millis();
   }
-  */
+  
 }
