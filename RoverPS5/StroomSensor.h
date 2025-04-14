@@ -42,6 +42,8 @@ void readINA(){
   powerOut = ina228_OUT.readPower()/1000;
   tempIn = ina228_IN.readDieTemp();
   tempOut = ina228_OUT.readDieTemp();
+
+  //Serial.printf("%f \t %f \t %f \t %f\n", currentOut, voltageOut, powerIn, powerOut);
 }
 
 #endif

@@ -48,6 +48,7 @@ float powerOut;
 float tempIn;
 float tempOut;
 
+int right_value;
 int solarDif;
 int solarLocation = 0;
 

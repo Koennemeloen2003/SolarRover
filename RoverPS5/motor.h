@@ -22,40 +22,45 @@ void steerCalc(){
   }
 }
 
+void motors(int Speed, int SteerLeft, int SteerRight, bool Forward){
+      if (Forward > 0) {
+        pwm.setPWM(leftEneable, 0, 0);
+        pwm.setPWM(rightEneable, 0, 0);
+
+        pwm.setPWM(leftFR, 0, 0);
+        pwm.setPWM(rightFR, 0, 4095);
+
+        pwm.setPWM(leftMotor, 0, (Speed/SteerLeft)*10);
+        pwm.setPWM(rightMotor, 0, (SpeedF/SteerRight)*10);
+        
+      }
+      else{
+        pwm.setPWM(leftEneable, 0, 0);
+        pwm.setPWM(rightEneable, 0, 0);
+
+        pwm.setPWM(leftFR, 0, 4095);
+        pwm.setPWM(rightFR, 0, 0);
+        
+        pwm.setPWM(leftMotor, 0, (Speed/SteerLeft)*10);
+        pwm.setPWM(rightMotor, 0, (SpeedF/SteerRight)*10);
+        
+      }
+}
 
 void motorSet(){
     // Drive each pin in a 'wave'
     if (SpeedF>0 && SpeedR ==0){
-      pwm.setPWM(leftEneable, 0, 0);
-      pwm.setPWM(rightEneable, 0, 0);
-      pwm.setPWM(leftMotor, 0, (SpeedF/SteerL)*10);
-      pwm.setPWM(leftFR, 0, 0);
-      pwm.setPWM(rightMotor, 0, (SpeedF/SteerR)*10);
-      pwm.setPWM(rightFR, 0, 4095);
+      motors(SpeedF, SteerL, SteerR, true);
+
     }
     else if (SpeedR > 0 && SpeedF==0){
-      pwm.setPWM(leftEneable, 0, 0);
-      pwm.setPWM(rightEneable, 0, 0);
-      pwm.setPWM(leftMotor, 0, (SpeedR/SteerL)*10);
-      pwm.setPWM(leftFR, 0, 4095);
-      pwm.setPWM(rightMotor, 0, (SpeedR/SteerR)*10);
-      pwm.setPWM(rightFR, 0, 0);
+      motors(SpeedR, SteerL, SteerR, false);
     }
     else if (SpeedF>0 && SpeedR <SpeedF){
-      pwm.setPWM(leftEneable, 0, 0);
-      pwm.setPWM(rightEneable, 0, 0);
-      pwm.setPWM(leftMotor, 0, ((SpeedF-SpeedR)/SteerL)*10);
-      pwm.setPWM(leftFR, 0, 0);
-      pwm.setPWM(rightMotor, 0, ((SpeedF-SpeedR)/SteerR)*10);
-      pwm.setPWM(rightFR, 0, 4095);
+      motors(SpeedF- SpeedR, SteerL, SteerR, true);
     }
     else if (SpeedR>0 && SpeedF <SpeedR){
-      pwm.setPWM(leftEneable, 0, 0);
-      pwm.setPWM(rightEneable, 0, 0);
-      pwm.setPWM(leftMotor, 0, ((SpeedR-SpeedF)/SteerL)*10);
-      pwm.setPWM(leftFR, 0, 4095);
-      pwm.setPWM(rightMotor, 0, ((SpeedR-SpeedF)/SteerR)*10);
-      pwm.setPWM(rightFR, 0, 0);
+      motors(SpeedR- SpeedF, SteerL, SteerR, false);
     }
     else {
       pwm.setPWM(leftMotor, 0, 0);
@@ -65,5 +70,6 @@ void motorSet(){
 
     }
 }
+
 
 #endif

@@ -55,6 +55,9 @@ void displaySetup(){
      Serial.println("Unable to initialize OLED");
      while (1) yield();
   }
+  else{
+    Serial.println("schermpje doet het");
+  }
   display.setTextSize(1);
   display.setTextColor(WHITE);
   display.clearDisplay();
@@ -86,14 +89,9 @@ void displayLoop(){
   display.println(" A");
 
   display.setCursor(0,40);
-  display.print("Temp out: ");
-  display.print(tempOut);
-  display.println(" *C");
-
-  display.setCursor(0,50);
-  display.print("Temp in: ");
-  display.print(tempIn);
-  display.println(" *C");
+  display.print("Batterij: ");
+  display.print(voltageOut/30 *100);
+  display.println(" %");
 
   display.display();
 

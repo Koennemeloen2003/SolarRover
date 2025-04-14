@@ -5,6 +5,7 @@
 #include "Solar.h"
 #include "Display.h"
 #include "StroomSensor.h"
+#include <uni.h>
 
 void setup() {
   // put your setup code here, to run once:
@@ -12,7 +13,8 @@ void setup() {
   delay(1000);
   ControllerSetup();
   setupPWM();
-  linetrackersetup();
+  //linetrackersetup();
+  LineTrackSetup2();
   INASetup();
   displaySetup();
 }
@@ -21,15 +23,18 @@ void loop() {
   // put your main code here, to run repeatedly:
   
   controllerUpdate();
-  Serial.printf("%d \t %d \t %d \t %d\n",analogRead(ldrLeft), analogRead(ldrRight), analogRead(solarKnopRight), analogRead(solarKnopLeft)); 
   if ((timer + 100 < millis()) && useLineTracker == false){
     speedCalc();
     steerCalc();
     motorSet();
     timer = millis();
+   // Serial.printf("%d \t %d \t %d \t %d\n",analogRead(ldrLeft), analogRead(ldrRight), analogRead(solarKnopRight), analogRead(solarKnopLeft)); 
+
   } 
   if (useLineTracker == true && (timer2 +1000 < millis())){
-    linetracker();
+    //linetracker();
+    LineTrackerMove2();
+    swapValues(right_value);
     timer2=millis();
   }
   if(ina228_IN.conversionReady()){
