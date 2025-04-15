@@ -31,7 +31,7 @@ void motors(int Speed, int SteerLeft, int SteerRight, bool Forward){
         pwm.setPWM(rightFR, 0, 4095);
 
         pwm.setPWM(leftMotor, 0, (Speed/SteerLeft)*10);
-        pwm.setPWM(rightMotor, 0, (Speeds/SteerRight)*10);
+        pwm.setPWM(rightMotor, 0, (Speed/SteerRight)*10);
         
       }
       else{
