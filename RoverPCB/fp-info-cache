@@ -1,4 +1,4 @@
-25276709092422763
+25276994840302124
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -66752,6 +66752,13 @@ ESP32_DEVKIT_V1_op_voetjes
 90
 30
 Meloen
+ESP32_DEVKIT_V1_op_voetjes2rij
+
+
+0
+60
+30
+Meloen
 INDPM6868X420N 33uh
 6.8mm x 6.8mm x 4.2mm
 Inductor
@@ -101455,7 +101462,7 @@ ESP32_DEVKIT_V1_op_voetjes
 
 
 0
-30
+60
 30
 Zuydlib3
 LM2596_module
@@ -101478,70 +101485,63 @@ joystick_2P
 0
 6
 6
-pj320a
-PJ-320A
-
-
-0
-4
-4
-zuydlib4
+Zuydlib4
 BatteryHolder_Keystone_1057_1x2032
 SMT (Auto-In/Ultra-Low) Holder for 2032 Cell, 33.2 x 23.9mm, 2mm height above PCB, https://www.keyelco.com/userAssets/file/M65p4.pdf
 Keystone type 1057 coin cell holder
 0
 2
 2
-zuydlib4
+Zuydlib4
 CON-THT-2P-5.08MM-KF2EDGR-5.08-2P
 
 
 0
 2
 2
-zuydlib4
+Zuydlib4
 CON-THT-4P-5.08MM-KF2EDGR-5.08-4P
 
 
 0
 4
 4
-zuydlib4
+Zuydlib4
 ESP32_DEVKIT_V1
 
 
 0
 30
 30
-zuydlib4
+Zuydlib4
 LM2596_module
 
 
 0
 4
 4
-zuydlib4
+Zuydlib4
 RJ25_Wayconn_MJEA-660X1_Horizontal
 RJ25 6P6C Socket 90 degrees, https://wayconn.com/wp-content/themes/way/datasheet/MJEA-660X1XXX_RJ25_6P6C_PCB_RA.pdf
 RJ12 RJ18 RJ25 jack connector 6P6C
 0
 6
 6
-zuydlib4
+Zuydlib4
 SW_CuK_SPDT_Angled
 
 
 0
 5
 3
-zuydlib4
+Zuydlib4
 joystick_2P
 
 
 0
 6
 6
-zuydlib4
+Zuydlib4
 joystick_3P
 
 
