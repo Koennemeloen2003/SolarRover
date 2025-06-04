@@ -1,4 +1,4 @@
-25281957279139906
+25280209290480146
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -66790,13 +66790,6 @@ Meloen
 R015 shunt
 Resistor SMD 2816 (7142 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size from: https://www.vishay.com/docs/30100/wsl.pdf), generated with kicad-footprint-generator
 resistor handsolder
-0
-2
-2
-Meloen
-RB500-50
-
-
 0
 2
 2

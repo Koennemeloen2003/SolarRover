@@ -58,12 +58,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        [
-          "courtyards_overlap|59041327|87086791|8ed3107c-775c-484d-86e6-b18e8407de41|fd4ce3ab-17aa-4347-a19e-fa13f7513a6d",
-          ""
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -507,7 +502,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "../../gerber-roverPCB-Koen-aben/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
