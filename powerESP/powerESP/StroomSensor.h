@@ -43,7 +43,7 @@ void readINA(){
   tempIn = ina228_IN.readDieTemp();
   tempOut = ina228_OUT.readDieTemp();
 
-  //Serial.printf("%f \t %f \t %f \t %f\n", currentOut, voltageOut, powerIn, powerOut);
+  Serial.printf("%f \t %f \t %f \t %f\n", currentOut, voltageOut, powerIn, powerOut);
 }
 
 #endif

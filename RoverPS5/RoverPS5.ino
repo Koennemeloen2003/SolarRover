@@ -3,8 +3,6 @@
 #include "motor.h"
 #include "Linetracker.h"
 #include "Solar.h"
-#include "Display.h"
-#include "StroomSensor.h"
 #include <uni.h>
 
 void setup() {
@@ -15,8 +13,6 @@ void setup() {
   setupPWM();
   //linetrackersetup();
   LineTrackSetup2();
-  INASetup();
-  displaySetup();
 }
 
 void loop() {
@@ -37,10 +33,7 @@ void loop() {
     swapValues(right_value);
     timer2=millis();
   }
-  if(ina228_IN.conversionReady()){
-    readINA();
-    displayLoop();
-  }
+
   if (useSolarTracker == true && (timer4 + 100 < millis())){
     solarSensor();
     timer4 = millis();

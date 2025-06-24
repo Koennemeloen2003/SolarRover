@@ -55,17 +55,17 @@ int solarLocation = 0;
 bool useLineTracker = false;
 bool useSolarTracker = false;
 
-#define leftMotor 0
-#define leftFR 1
-#define leftEneable 2
+#define leftMotor 2
+#define leftFR 0
+#define leftEneable 1
 
-#define stapmotor 4
-#define stapFR 5
-#define stapEneable 6
+#define stapmotor 11
+#define stapFR 9
+#define stapEneable 10 
 
-#define rightMotor 8
-#define rightFR 9
-#define rightEneable 10
+#define rightMotor 5
+#define rightFR 3
+#define rightEneable 4
 
 #define ldrRight 32
 #define ldrLeft 25
