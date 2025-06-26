@@ -8,7 +8,7 @@ Adafruit_INA228 ina228_IN = Adafruit_INA228();
 Adafruit_INA228 ina228_OUT = Adafruit_INA228();
 
 void INASetup(){
-    if (!ina228_IN.begin(0x41)) {
+    if (!ina228_IN.begin(0x44)) {
     Serial.println("Couldn't find INA228 input chip");
     while (1);
   }
@@ -16,7 +16,7 @@ void INASetup(){
   // set shunt resistance and max current
   ina228_IN.setShunt(0.015, 10.0);
 
-     if (!ina228_OUT.begin(0x44)) {
+     if (!ina228_OUT.begin(0x41)) {
     Serial.println("Couldn't find INA228 output chip");
     while (1);
   }
@@ -38,7 +38,7 @@ void readINA(){
 
   currentOut = ina228_OUT.readCurrent()/1000;
   voltageOut = ina228_OUT.readBusVoltage()/1000000;
-  powerIn = ina228_IN.readPower()/1000;
+  powerIn = ina228_IN.readPower();
   powerOut = ina228_OUT.readPower()/1000;
   tempIn = ina228_IN.readDieTemp();
   tempOut = ina228_OUT.readDieTemp();

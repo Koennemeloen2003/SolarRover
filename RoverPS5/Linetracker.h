@@ -207,9 +207,11 @@ void LineTrackSetup2()
  
   if (!mcp.begin_I2C(0x27)) {
     Serial.println("MCP23017 niet gevonden!");
-    while (1);
   }
-  Serial.println("Linetracker doet het");
+  else{
+    Serial.println("Linetracker doet het");
+  }
+  
   int sensorPins[] = {0, 1, 2, 3, 4, 15, 13, 12, 11, 10};
   for (int i = 0; i < 10; i++) {
     mcp.pinMode(sensorPins[i], INPUT);

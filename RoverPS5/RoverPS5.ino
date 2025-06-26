@@ -9,6 +9,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
   delay(1000);
+  pinSetup();
   ControllerSetup();
   setupPWM();
   //linetrackersetup();
@@ -38,5 +39,6 @@ void loop() {
     solarSensor();
     timer4 = millis();
   }
+
   
 }

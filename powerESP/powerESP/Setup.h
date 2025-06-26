@@ -11,6 +11,7 @@ float powerIn;
 float powerOut;
 float tempIn;
 float tempOut;
+unsigned long timer;
 
 
 #endif

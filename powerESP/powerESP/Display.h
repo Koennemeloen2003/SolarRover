@@ -70,7 +70,7 @@ void displayLoop(){
   display.clearDisplay();
   display.setCursor(0,0);
   display.print("Power in: ");
-  display.print(powerIn);
+  display.print(powerIn/1000);
   display.println(" W");
 
   display.setCursor(0,10);

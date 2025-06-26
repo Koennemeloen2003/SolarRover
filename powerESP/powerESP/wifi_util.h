@@ -1,3 +1,4 @@
+#include <stdint.h>
 #ifndef WIFI_UTIL_H
 #define WIFI_UTIL_H
 
@@ -52,7 +53,7 @@ bool wifi_init() {
  * @param value_decplaces Aantal decimalen achter de komma
  * @return true als verzenden is gelukt
  */
-bool wifi_send_if_associated(uint16_t color, uint16_t value, uint8_t value_decplaces) {
+bool wifi_send_if_associated(uint16_t vermogen, uint32_t speed, uint8_t battery) {
   if (!wifiConnected) {
     Serial.println("Wi-Fi niet verbonden, verzenden mislukt.");
     return false;
@@ -66,16 +67,21 @@ bool wifi_send_if_associated(uint16_t color, uint16_t value, uint8_t value_decpl
   message[2] = 'H';
   message[3] = 'v';
 
+  message[12] = (speed >> 24) & 0xFF;
+  message[13] = (speed >> 16) & 0xFF;
+  message[14] = (speed >> 8) & 0xFF;
+  message[15] = speed & 0xFF;
+
   // Color (big-endian)
-  message[20] = (color >> 8) & 0xFF;
-  message[21] = color & 0xFF;
+  message[20] = (vermogen >> 8) & 0xFF;
+  message[21] = vermogen & 0xFF;
 
   // Value (big-endian)
-  message[22] = (value >> 8) & 0xFF;
-  message[23] = value & 0xFF;
+//  message[22] = (value >> 8) & 0xFF;
+ // message[23] = value & 0xFF;
 
   // Decimal places
-  message[28] = value_decplaces;
+  message[28] = battery;
 
   // Verstuur via UDP
   udp.beginPacket(ROVERHUB_ADDRESS, ROVERHUB_PORT);

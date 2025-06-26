@@ -96,8 +96,30 @@ void processGamepad(ControllerPtr ctl) {
         Serial.println("Solar tracker uit");
 
         }
+        if((ctl->buttons() & 0x0100) && magnetOn == false){
+            magnetOn = true;
+            digitalWrite(magneetTransistor, HIGH);
+            Serial.println("Magneet aan");
+        }
+        else if((ctl->buttons() & 0x0100) && magnetOn == true){
+            magnetOn = false;
+            digitalWrite(magneetTransistor, LOW);
+            Serial.println("Magneet uit");
+        }
+        if((ctl->buttons() & 0x0200) && detectorOn == false){
+            detectorOn = true;
+            digitalWrite(detectorTransistor, HIGH);
+            Serial.println("detector aan");
+        }
+        else if((ctl->buttons() & 0x0200) && detectorOn == true){
+            detectorOn = false;
+            digitalWrite(detectorTransistor, LOW);
+            Serial.println("Detector uit");
+        }
       timer3 = millis();
     }
+
+
     if (ctl->a()) {
         static int colorIdx = 0;
         // Some gamepads like DS4 and DualSense support changing the color LED.

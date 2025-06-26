@@ -28,8 +28,6 @@ void setupPWM() {
   Wire.setClock(400000);
 }
 
-unsigned int data;
-unsigned long previousWatchDogTime;
 unsigned long timer = 0;
 unsigned long timer2= 0;
 unsigned long timer3 = 0;
@@ -50,10 +48,11 @@ float tempOut;
 
 int right_value;
 int solarDif;
-int solarLocation = 0;
 
 bool useLineTracker = false;
 bool useSolarTracker = false;
+bool magnetOn = false;
+bool detectorOn = false;
 
 #define leftMotor 2
 #define leftFR 0
@@ -72,8 +71,16 @@ bool useSolarTracker = false;
 #define solarKnopRight 35
 #define solarKnopLeft 33
 
+#define magneetTransistor 18
+#define detectorTransistor 19
+
 int betereJoystick(int Xmax, float x, float Pmax, float p, int Amplitude) {
   return Amplitude * (x * sqrt(sq(Pmax) - sq(p))) / (sqrt(sq(Pmax) * sq(Xmax) - sq(p * x)));
+}
+
+void pinSetup(){
+  pinMode(magneetTransistor, OUTPUT);
+  pinMode(detectorTransistor, OUTPUT);
 }
 
 #endif
