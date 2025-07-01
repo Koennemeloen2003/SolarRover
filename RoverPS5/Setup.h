@@ -20,7 +20,7 @@ void setupPWM() {
   else {
     Serial.println("PWM bordje gevonden");
   }
-  pwm.setPWMFreq(1000);  // Set to whatever you like, we don't use it in this demo!
+  pwm.setPWMFreq(50);  // Set to whatever you like, we don't use it in this demo!
 
   // if you want to really speed stuff up, you can go into 'fast 400khz I2C' mode
   // some i2c devices dont like this so much so if you're sharing the bus, watch
@@ -54,6 +54,35 @@ bool useSolarTracker = false;
 bool magnetOn = false;
 bool detectorOn = false;
 
+int scanCount = 0;
+int lastUpdateCount = -2;
+
+int objectStart[2];
+int objectEnd[2];
+int objectAverage[2];
+
+int PWM_ServoSensor = 15;
+float x_sensor = 0.0;
+float y_sensor = 0.0;
+int Ultradistance;
+int pos = 0;    // variable to store the servo position
+int servoPos = 0;
+int minPos = 0;
+int maxPos = 180;
+int readToFsensor = 0;
+int minRange = 250;
+int maxRange = 500;
+int maxOutRange = 2000;
+int previousDistance;
+int previousAngle;
+bool previousObjectInRange = 0;
+bool objectTooClose = 0;
+bool objectInRange = 0;
+bool objectOutRange = 0;
+bool objectTooFar = 0;
+bool objectWasInRange;
+int objectCoordinatesDeg;
+
 #define leftMotor 2
 #define leftFR 0
 #define leftEneable 1
@@ -73,6 +102,11 @@ bool detectorOn = false;
 
 #define magneetTransistor 18
 #define detectorTransistor 19
+
+#define trigPin 15
+#define echoPin 12
+
+float realSpeed;
 
 int betereJoystick(int Xmax, float x, float Pmax, float p, int Amplitude) {
   return Amplitude * (x * sqrt(sq(Pmax) - sq(p))) / (sqrt(sq(Pmax) * sq(Xmax) - sq(p * x)));

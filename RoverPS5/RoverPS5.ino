@@ -3,15 +3,20 @@
 #include "motor.h"
 #include "Linetracker.h"
 #include "Solar.h"
+#include "Ultrasonic.h"
+#include "Tof.h"
 #include <uni.h>
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
+  Serial2.begin(115200, SERIAL_8N1, 16, 17);
   delay(1000);
   pinSetup();
   ControllerSetup();
   setupPWM();
+  setUltrasoon();
+  setToF();
   //linetrackersetup();
   LineTrackSetup2();
 }
@@ -28,7 +33,7 @@ void loop() {
    // Serial.printf("%d \t %d \t %d \t %d\n",analogRead(ldrLeft), analogRead(ldrRight), analogRead(solarKnopRight), analogRead(solarKnopLeft)); 
 
   } 
-  if (useLineTracker == true && (timer2 +1000 < millis())){
+  if (useLineTracker == true && (timer2 +100 < millis())){
     //linetracker();
     LineTrackerMove2();
     swapValues(right_value);
@@ -40,5 +45,13 @@ void loop() {
     timer4 = millis();
   }
 
+  if (detectorOn == true && (timer4 + 500 < millis())){
+    setServoAngleSensor(15, 90);
+    loopSensor();
+    calcObject();
+    setServoAngleSensor(15, 90);
+    timer4 = millis();
+  }
+  
   
 }

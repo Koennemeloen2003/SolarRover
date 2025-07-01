@@ -12,6 +12,8 @@ float powerOut;
 float tempIn;
 float tempOut;
 unsigned long timer;
+unsigned long timerSerial;
+int32_t speed;
 
 
 #endif

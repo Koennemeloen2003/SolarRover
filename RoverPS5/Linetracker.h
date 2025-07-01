@@ -212,7 +212,7 @@ void LineTrackSetup2()
     Serial.println("Linetracker doet het");
   }
   
-  int sensorPins[] = {0, 1, 2, 3, 4, 15, 13, 12, 11, 10};
+  int sensorPins[] = {0, 1, 2, 3, 4, 15, 14, 13, 12, 11};
   for (int i = 0; i < 10; i++) {
     mcp.pinMode(sensorPins[i], INPUT);
   }
@@ -228,7 +228,7 @@ static inline int swapValues(int val) {
 
 
 inline void LineTrackerMove2() {
-
+  float temp;
   int left_value = 0;
   int right_value = 0;
 
@@ -278,6 +278,15 @@ inline void LineTrackerMove2() {
   int baseSpeed = 2048;
   int leftSpeed = constrain(baseSpeed - line, baseSpeed, 4095);
   int rightSpeed = constrain(baseSpeed + line, baseSpeed, 4095);
+  if(leftSpeed > rightSpeed ){
+    temp = leftSpeed;
+  }
+  else {
+    temp = rightSpeed;
+  }
+  realSpeed = calcRealSpeed(temp*5/4095, 3.625, 62.8);
+  Serial2.println(realSpeed);
+  Serial.println(realSpeed);
 
   if (left_value == 0 && right_value == 0) {
 

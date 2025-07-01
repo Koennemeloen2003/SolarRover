@@ -53,7 +53,7 @@ bool wifi_init() {
  * @param value_decplaces Aantal decimalen achter de komma
  * @return true als verzenden is gelukt
  */
-bool wifi_send_if_associated(uint16_t vermogen, uint32_t speed, uint8_t battery) {
+bool wifi_send_if_associated(uint16_t vermogen, int32_t speed, uint8_t battery) {
   if (!wifiConnected) {
     Serial.println("Wi-Fi niet verbonden, verzenden mislukt.");
     return false;

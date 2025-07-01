@@ -108,12 +108,12 @@ void processGamepad(ControllerPtr ctl) {
         }
         if((ctl->buttons() & 0x0200) && detectorOn == false){
             detectorOn = true;
-            digitalWrite(detectorTransistor, HIGH);
+           // digitalWrite(detectorTransistor, HIGH);
             Serial.println("detector aan");
         }
         else if((ctl->buttons() & 0x0200) && detectorOn == true){
             detectorOn = false;
-            digitalWrite(detectorTransistor, LOW);
+           // digitalWrite(detectorTransistor, LOW);
             Serial.println("Detector uit");
         }
       timer3 = millis();

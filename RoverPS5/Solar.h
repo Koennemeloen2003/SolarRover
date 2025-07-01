@@ -4,11 +4,12 @@
 
 #include "Controller.h"
 #include "Setup.h"
-
+#include "Tof.h"
 
 void solarStep(int stepsize, bool right, int button){
   if (analogRead(button) < 1000){
-
+    pwm.setPWMFreq(1000);
+    pwm.setPWM(15, 0, 0);
     if (right>0){ 
       
       pwm.setPWM(stapEneable, 0 ,0);
@@ -30,6 +31,8 @@ void solarStep(int stepsize, bool right, int button){
       Serial.println("links");
     }
   }
+  pwm.setPWMFreq(50);
+  setServoAngleSensor(15, 90);
 }
 
 void solarSensor(){

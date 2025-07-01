@@ -10,7 +10,6 @@ Adafruit_INA228 ina228_OUT = Adafruit_INA228();
 void INASetup(){
     if (!ina228_IN.begin(0x44)) {
     Serial.println("Couldn't find INA228 input chip");
-    while (1);
   }
   Serial.println("Found INA228 input chip");
   // set shunt resistance and max current
@@ -18,7 +17,6 @@ void INASetup(){
 
      if (!ina228_OUT.begin(0x41)) {
     Serial.println("Couldn't find INA228 output chip");
-    while (1);
   }
   Serial.println("Found INA228 output chip");
   // set shunt resistance and max current

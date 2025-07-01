@@ -53,7 +53,6 @@ static const unsigned char PROGMEM logo32bmp[] =
 void displaySetup(){
   if ( ! display.begin(0x3C) ) {
      Serial.println("Unable to initialize OLED");
-     while (1) yield();
   }
   else{
     Serial.println("schermpje doet het");
@@ -92,6 +91,11 @@ void displayLoop(){
   display.print("Batterij: ");
   display.print(voltageOut/30 *100);
   display.println(" %");
+
+  display.setCursor(0,50);
+  display.print("Snelheid: ");
+  display.print(speed);
+  display.println(" mm/s");
 
   display.display();
 

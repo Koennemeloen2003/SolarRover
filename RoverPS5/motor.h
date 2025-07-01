@@ -4,10 +4,26 @@
 #include "Controller.h"
 #include "Setup.h"
 
+float calcRealSpeed(float volt, float gears, float circumference){
+  float speed;
+  if (volt == 0){
+    return 0;
+  }
+  else{
+    return  (20.35*volt-1.95)/gears*circumference*10/60;
+  }
+}
+
 void speedCalc(){
   SpeedF= map(SpeedF, 0, 1020, 0, 4095);
   SpeedR = map(SpeedR, 0, 1020, 0, 4095);
+  float temp = (SpeedF-SpeedR);
+  float temp2 = 5*temp/4095;
+  realSpeed = calcRealSpeed(temp2, 3.625, 62.8);
+  Serial2.println(realSpeed);
 }
+
+
 
 void steerCalc(){
   if (Steer > 0){
