@@ -65,9 +65,12 @@ void processGamepad(ControllerPtr ctl) {
     // There are different ways to query whether a button is pressed.
     // By query each button individually:
     //  a(), b(), x(), y(), l1(), etc...
-    SpeedF = ctl->throttle();
-    SpeedR = ctl->brake();
-    Steer = ctl->axisX();
+    SpeedF      = ctl->throttle();
+    SpeedR      = ctl->brake();
+    Steer       = ctl->axisX();
+    armElbow    = ctl->axisRX();       // (-511 - 512) right X axis
+    armShoulder = ctl->axisRY();
+
     //funcitie met timer die de linetracker aan en uit zet
     if (timer3 + 400< millis()){
       if((ctl->dpad() & 0x01) && useLineTracker == false ){
@@ -83,6 +86,12 @@ void processGamepad(ControllerPtr ctl) {
         stappenmotor();
         Serial.println("Stappenmotor");
 
+      }
+      if(ctl->a() & handmatigArm == false){
+        handmatigArm = true;
+      }
+      else if (ctl->a() & handmatigArm == true){
+        handmatigArm = false;
       }
       if((ctl->dpad() & 0x08)){
         stappenmotorReverse();

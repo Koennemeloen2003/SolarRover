@@ -49,10 +49,16 @@ float tempOut;
 int right_value;
 int solarDif;
 
+int armShoulder;
+int armElbow;
+int elbowAngle= 90;
+int shoulderAngele = 90;
+
 bool useLineTracker = false;
 bool useSolarTracker = false;
 bool magnetOn = false;
 bool detectorOn = false;
+bool handmatigArm = false;
 
 int scanCount = 0;
 int lastUpdateCount = -2;
@@ -82,6 +88,8 @@ bool objectOutRange = 0;
 bool objectTooFar = 0;
 bool objectWasInRange;
 int objectCoordinatesDeg;
+
+
 
 #define leftMotor 2
 #define leftFR 0
